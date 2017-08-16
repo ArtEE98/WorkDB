@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ddbaf68037184e328b503a701288ed8c" Name="Diagram1">
+        <EntityTypeShape EntityType="gbua_adminclubModel.C__migrationhistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbua_adminclubModel.client_status" Width="1.5" PointX="6" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbua_adminclubModel.clients" Width="1.5" PointX="8.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbua_adminclubModel.companies" Width="1.5" PointX="3" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbua_adminclubModel.delivery_mails" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbua_adminclubModel.dialogs" Width="1.5" PointX="0.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbua_adminclubModel.invites" Width="1.5" PointX="8.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbua_adminclubModel.mails" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbua_adminclubModel.messages" Width="1.5" PointX="6" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbua_adminclubModel.notes" Width="1.5" PointX="5.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbua_adminclubModel.permissions" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbua_adminclubModel.roles" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbua_adminclubModel.sent_delivery_mails" Width="1.5" PointX="8.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbua_adminclubModel.sites" Width="1.5" PointX="6" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbua_adminclubModel.sitesfotosetting" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbua_adminclubModel.timetables" Width="1.5" PointX="5.25" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbua_adminclubModel.user_clients" Width="1.5" PointX="8.25" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbua_adminclubModel.user_data" Width="1.5" PointX="11.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbua_adminclubModel.users" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <AssociationConnector Association="gbua_adminclubModel.FK_clients_client_status_StatusId" ManuallyRouted="false" />
+        <AssociationConnector Association="gbua_adminclubModel.FK_clients_Sites_site_id" ManuallyRouted="false" />
+        <AssociationConnector Association="gbua_adminclubModel.FK_Companies_Dialogs_DialogId" ManuallyRouted="false" />
+        <AssociationConnector Association="gbua_adminclubModel.FK_Companies_Users_DirectorId" ManuallyRouted="false" />
+        <AssociationConnector Association="gbua_adminclubModel.FK_delivery_mails_Users_user_id" ManuallyRouted="false" />
+        <AssociationConnector Association="gbua_adminclubModel.FK_Messages_Dialogs_Dialog_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="gbua_adminclubModel.FK_invites_Sites_site_id" ManuallyRouted="false" />
+        <AssociationConnector Association="gbua_adminclubModel.FK_invites_Users_user_id" ManuallyRouted="false" />
+        <AssociationConnector Association="gbua_adminclubModel.FK_Messages_Users_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="gbua_adminclubModel.FK_Notes_Users_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="gbua_adminclubModel.FK_Permissions_Roles_RoleId" ManuallyRouted="false" />
+        <AssociationConnector Association="gbua_adminclubModel.FK_Users_Roles_RoleId" ManuallyRouted="false" />
+        <AssociationConnector Association="gbua_adminclubModel.FK_sent_delivery_mails_Sites_site_id" ManuallyRouted="false" />
+        <AssociationConnector Association="gbua_adminclubModel.FK_sent_delivery_mails_Users_user_id" ManuallyRouted="false" />
+        <AssociationConnector Association="gbua_adminclubModel.FK_User_data_Sites_site_id" ManuallyRouted="false" />
+        <AssociationConnector Association="gbua_adminclubModel.user_clients_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="gbua_adminclubModel.FK_Timetables_Users_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="gbua_adminclubModel.user_clients_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="gbua_adminclubModel.FK_User_data_Users_user_id" ManuallyRouted="false" />
+        <AssociationConnector Association="gbua_adminclubModel.FK_Users_Users_ChiefId" ManuallyRouted="false" />
+        <AssociationConnector Association="gbua_adminclubModel.userdialogs" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

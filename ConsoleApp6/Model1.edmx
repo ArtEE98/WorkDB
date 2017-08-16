@@ -1,0 +1,1516 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище gbua_adminclubModel" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__migrationhistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="longblob" Nullable="false" />
+          <Property Name="ProductVersion" Type="varchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="client_status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="longtext" />
+        </EntityType>
+        <EntityType Name="clients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="longtext" />
+          <Property Name="site_id" Type="bigint" Nullable="false" />
+          <Property Name="StatusId" Type="bigint" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="companies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DirectorId" Type="bigint" Nullable="false" />
+          <Property Name="DialogId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="delivery_mails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="bigint" Nullable="false" />
+          <Property Name="subject" Type="longtext" />
+          <Property Name="body" Type="longtext" />
+          <Property Name="attachment_id" Type="bigint" />
+          <Property Name="name" Type="longtext" />
+          <Property Name="group_id" Type="int" />
+        </EntityType>
+        <EntityType Name="dialogs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="invites">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="body" Type="longtext" />
+          <Property Name="date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="user_id" Type="bigint" Nullable="false" />
+          <Property Name="site_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="From" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Subject" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="Body" Type="longtext" Nullable="false" />
+          <Property Name="Attachment" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="SentDate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="ReadDate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="messages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="longtext" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="SendDate" Type="datetime" Precision="0" />
+          <Property Name="IsReaded" Type="bool" Nullable="false" />
+          <Property Name="Dialog_Id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="notes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="permissions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsAllowed" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sent_delivery_mails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="bigint" Nullable="false" />
+          <Property Name="client_id" Type="bigint" Nullable="false" />
+          <Property Name="delivery_mail_id" Type="bigint" Nullable="false" />
+          <Property Name="date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="site_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sites">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="longtext" />
+          <Property Name="width" Type="int" Nullable="false" />
+          <Property Name="heigth" Type="int" Nullable="false" />
+          <Property Name="size" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sitesfotosetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="longtext" />
+          <Property Name="width" Type="int" Nullable="false" />
+          <Property Name="heigth" Type="int" Nullable="false" />
+          <Property Name="size" Type="int" Nullable="false" />
+          <Property Name="Profile_img_width" Type="int" Nullable="false" />
+          <Property Name="Profile_img_heigth" Type="int" Nullable="false" />
+          <Property Name="VideoWidth" Type="int" Nullable="false" />
+          <Property Name="VideoHeigth" Type="int" Nullable="false" />
+          <Property Name="VideoFormat" Type="longtext" />
+          <Property Name="videoSize" Type="int" Nullable="false" />
+          <Property Name="isFixedResolution" Type="bool" Nullable="false" />
+          <Property Name="HorizontalWidth" Type="int" Nullable="false" />
+          <Property Name="HorizontalHeigth" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="timetables">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="DayOfWeek" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Precision="0" />
+          <Property Name="Begin" Type="datetime" Precision="0" />
+          <Property Name="End" Type="datetime" Precision="0" />
+          <Property Name="Total" Type="time" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_clients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="bigint" Nullable="false" />
+          <Property Name="site_id" Type="bigint" Nullable="false" />
+          <Property Name="client_id" Type="bigint" Nullable="false" />
+          <Property Name="Sent_delivery_mail" Type="bigint" />
+        </EntityType>
+        <EntityType Name="user_data">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="bigint" Nullable="false" />
+          <Property Name="site_id" Type="bigint" Nullable="false" />
+          <Property Name="login" Type="longtext" />
+          <Property Name="password" Type="longtext" />
+        </EntityType>
+        <EntityType Name="userdialogs">
+          <Key>
+            <PropertyRef Name="User_Id" />
+            <PropertyRef Name="Dialog_Id" />
+          </Key>
+          <Property Name="User_Id" Type="bigint" Nullable="false" />
+          <Property Name="Dialog_Id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsOnline" Type="bool" Nullable="false" />
+          <Property Name="RoleId" Type="bigint" Nullable="false" />
+          <Property Name="ChiefId" Type="bigint" />
+          <Property Name="Photo" Type="blob" />
+          <Property Name="CompanyId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_clients_client_status_StatusId">
+          <End Role="client_status" Type="Self.client_status" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="clients" Type="Self.clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client_status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="clients">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clients_Sites_site_id">
+          <End Role="sites" Type="Self.sites" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="clients" Type="Self.clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="clients">
+              <PropertyRef Name="site_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Companies_Dialogs_DialogId">
+          <End Role="dialogs" Type="Self.dialogs" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="companies" Type="Self.companies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dialogs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="companies">
+              <PropertyRef Name="DialogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Companies_Users_DirectorId">
+          <End Role="users" Type="Self.users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="companies" Type="Self.companies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="companies">
+              <PropertyRef Name="DirectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_delivery_mails_Users_user_id">
+          <End Role="users" Type="Self.users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="delivery_mails" Type="Self.delivery_mails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="delivery_mails">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_invites_Sites_site_id">
+          <End Role="sites" Type="Self.sites" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="invites" Type="Self.invites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="invites">
+              <PropertyRef Name="site_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_invites_Users_user_id">
+          <End Role="users" Type="Self.users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="invites" Type="Self.invites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="invites">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_Dialogs_Dialog_Id">
+          <End Role="dialogs" Type="Self.dialogs" Multiplicity="0..1" />
+          <End Role="messages" Type="Self.messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dialogs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="Dialog_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_Users_UserId">
+          <End Role="users" Type="Self.users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="messages" Type="Self.messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notes_Users_UserId">
+          <End Role="users" Type="Self.users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="notes" Type="Self.notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="notes">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Permissions_Roles_RoleId">
+          <End Role="roles" Type="Self.roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="permissions" Type="Self.permissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="permissions">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sent_delivery_mails_Sites_site_id">
+          <End Role="sites" Type="Self.sites" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="sent_delivery_mails" Type="Self.sent_delivery_mails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="sent_delivery_mails">
+              <PropertyRef Name="site_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sent_delivery_mails_Users_user_id">
+          <End Role="users" Type="Self.users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="sent_delivery_mails" Type="Self.sent_delivery_mails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="sent_delivery_mails">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Timetables_Users_UserId">
+          <End Role="users" Type="Self.users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="timetables" Type="Self.timetables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="timetables">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_data_Sites_site_id">
+          <End Role="sites" Type="Self.sites" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="user_data" Type="Self.user_data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="user_data">
+              <PropertyRef Name="site_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_data_Users_user_id">
+          <End Role="users" Type="Self.users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="user_data" Type="Self.user_data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="user_data">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDialogs_Dialogs_Dialog_Id">
+          <End Role="dialogs" Type="Self.dialogs" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="userdialogs" Type="Self.userdialogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dialogs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="userdialogs">
+              <PropertyRef Name="Dialog_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDialogs_Users_User_Id">
+          <End Role="users" Type="Self.users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="userdialogs" Type="Self.userdialogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="userdialogs">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Roles_RoleId">
+          <End Role="roles" Type="Self.roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Users_ChiefId">
+          <End Role="users" Type="Self.users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="users1" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="users1">
+              <PropertyRef Name="ChiefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_clients_ibfk_1">
+          <End Role="sites" Type="Self.sites" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="user_clients" Type="Self.user_clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="user_clients">
+              <PropertyRef Name="site_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_clients_ibfk_2">
+          <End Role="users" Type="Self.users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="user_clients" Type="Self.user_clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="user_clients">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище gbua_adminclubModelContainer">
+          <EntitySet Name="__migrationhistory" EntityType="Self.__migrationhistory" Schema="gbua_adminclub" store:Type="Tables" />
+          <EntitySet Name="client_status" EntityType="Self.client_status" Schema="gbua_adminclub" store:Type="Tables" />
+          <EntitySet Name="clients" EntityType="Self.clients" Schema="gbua_adminclub" store:Type="Tables" />
+          <EntitySet Name="companies" EntityType="Self.companies" Schema="gbua_adminclub" store:Type="Tables" />
+          <EntitySet Name="delivery_mails" EntityType="Self.delivery_mails" Schema="gbua_adminclub" store:Type="Tables" />
+          <EntitySet Name="dialogs" EntityType="Self.dialogs" Schema="gbua_adminclub" store:Type="Tables" />
+          <EntitySet Name="invites" EntityType="Self.invites" Schema="gbua_adminclub" store:Type="Tables" />
+          <EntitySet Name="mails" EntityType="Self.mails" Schema="gbua_adminclub" store:Type="Tables" />
+          <EntitySet Name="messages" EntityType="Self.messages" Schema="gbua_adminclub" store:Type="Tables" />
+          <EntitySet Name="notes" EntityType="Self.notes" Schema="gbua_adminclub" store:Type="Tables" />
+          <EntitySet Name="permissions" EntityType="Self.permissions" Schema="gbua_adminclub" store:Type="Tables" />
+          <EntitySet Name="roles" EntityType="Self.roles" Schema="gbua_adminclub" store:Type="Tables" />
+          <EntitySet Name="sent_delivery_mails" EntityType="Self.sent_delivery_mails" Schema="gbua_adminclub" store:Type="Tables" />
+          <EntitySet Name="sites" EntityType="Self.sites" Schema="gbua_adminclub" store:Type="Tables" />
+          <EntitySet Name="sitesfotosetting" EntityType="Self.sitesfotosetting" Schema="gbua_adminclub" store:Type="Tables" />
+          <EntitySet Name="timetables" EntityType="Self.timetables" Schema="gbua_adminclub" store:Type="Tables" />
+          <EntitySet Name="user_clients" EntityType="Self.user_clients" Schema="gbua_adminclub" store:Type="Tables" />
+          <EntitySet Name="user_data" EntityType="Self.user_data" Schema="gbua_adminclub" store:Type="Tables" />
+          <EntitySet Name="userdialogs" EntityType="Self.userdialogs" Schema="gbua_adminclub" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="gbua_adminclub" store:Type="Tables" />
+          <AssociationSet Name="FK_clients_client_status_StatusId" Association="Self.FK_clients_client_status_StatusId">
+            <End Role="client_status" EntitySet="client_status" />
+            <End Role="clients" EntitySet="clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clients_Sites_site_id" Association="Self.FK_clients_Sites_site_id">
+            <End Role="sites" EntitySet="sites" />
+            <End Role="clients" EntitySet="clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Companies_Dialogs_DialogId" Association="Self.FK_Companies_Dialogs_DialogId">
+            <End Role="dialogs" EntitySet="dialogs" />
+            <End Role="companies" EntitySet="companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Companies_Users_DirectorId" Association="Self.FK_Companies_Users_DirectorId">
+            <End Role="users" EntitySet="users" />
+            <End Role="companies" EntitySet="companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_delivery_mails_Users_user_id" Association="Self.FK_delivery_mails_Users_user_id">
+            <End Role="users" EntitySet="users" />
+            <End Role="delivery_mails" EntitySet="delivery_mails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_invites_Sites_site_id" Association="Self.FK_invites_Sites_site_id">
+            <End Role="sites" EntitySet="sites" />
+            <End Role="invites" EntitySet="invites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_invites_Users_user_id" Association="Self.FK_invites_Users_user_id">
+            <End Role="users" EntitySet="users" />
+            <End Role="invites" EntitySet="invites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_Dialogs_Dialog_Id" Association="Self.FK_Messages_Dialogs_Dialog_Id">
+            <End Role="dialogs" EntitySet="dialogs" />
+            <End Role="messages" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_Users_UserId" Association="Self.FK_Messages_Users_UserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="messages" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notes_Users_UserId" Association="Self.FK_Notes_Users_UserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="notes" EntitySet="notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Permissions_Roles_RoleId" Association="Self.FK_Permissions_Roles_RoleId">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="permissions" EntitySet="permissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sent_delivery_mails_Sites_site_id" Association="Self.FK_sent_delivery_mails_Sites_site_id">
+            <End Role="sites" EntitySet="sites" />
+            <End Role="sent_delivery_mails" EntitySet="sent_delivery_mails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sent_delivery_mails_Users_user_id" Association="Self.FK_sent_delivery_mails_Users_user_id">
+            <End Role="users" EntitySet="users" />
+            <End Role="sent_delivery_mails" EntitySet="sent_delivery_mails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Timetables_Users_UserId" Association="Self.FK_Timetables_Users_UserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="timetables" EntitySet="timetables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_data_Sites_site_id" Association="Self.FK_User_data_Sites_site_id">
+            <End Role="sites" EntitySet="sites" />
+            <End Role="user_data" EntitySet="user_data" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_data_Users_user_id" Association="Self.FK_User_data_Users_user_id">
+            <End Role="users" EntitySet="users" />
+            <End Role="user_data" EntitySet="user_data" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDialogs_Dialogs_Dialog_Id" Association="Self.FK_UserDialogs_Dialogs_Dialog_Id">
+            <End Role="dialogs" EntitySet="dialogs" />
+            <End Role="userdialogs" EntitySet="userdialogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDialogs_Users_User_Id" Association="Self.FK_UserDialogs_Users_User_Id">
+            <End Role="users" EntitySet="users" />
+            <End Role="userdialogs" EntitySet="userdialogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Roles_RoleId" Association="Self.FK_Users_Roles_RoleId">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Users_ChiefId" Association="Self.FK_Users_Users_ChiefId">
+            <End Role="users" EntitySet="users" />
+            <End Role="users1" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="user_clients_ibfk_1" Association="Self.user_clients_ibfk_1">
+            <End Role="sites" EntitySet="sites" />
+            <End Role="user_clients" EntitySet="user_clients" />
+          </AssociationSet>
+          <AssociationSet Name="user_clients_ibfk_2" Association="Self.user_clients_ibfk_2">
+            <End Role="users" EntitySet="users" />
+            <End Role="user_clients" EntitySet="user_clients" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="gbua_adminclubModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__migrationhistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="client_status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="clients" Relationship="Self.FK_clients_client_status_StatusId" FromRole="client_status" ToRole="clients" />
+        </EntityType>
+        <EntityType Name="clients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="site_id" Type="Int64" Nullable="false" />
+          <Property Name="StatusId" Type="Int64" Nullable="false" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="client_status" Relationship="Self.FK_clients_client_status_StatusId" FromRole="clients" ToRole="client_status" />
+          <NavigationProperty Name="sites" Relationship="Self.FK_clients_Sites_site_id" FromRole="clients" ToRole="sites" />
+        </EntityType>
+        <EntityType Name="companies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DirectorId" Type="Int64" Nullable="false" />
+          <Property Name="DialogId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="dialogs" Relationship="Self.FK_Companies_Dialogs_DialogId" FromRole="companies" ToRole="dialogs" />
+          <NavigationProperty Name="users" Relationship="Self.FK_Companies_Users_DirectorId" FromRole="companies" ToRole="users" />
+        </EntityType>
+        <EntityType Name="delivery_mails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int64" Nullable="false" />
+          <Property Name="subject" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="body" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="attachment_id" Type="Int64" />
+          <Property Name="name" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="group_id" Type="Int32" />
+          <NavigationProperty Name="users" Relationship="Self.FK_delivery_mails_Users_user_id" FromRole="delivery_mails" ToRole="users" />
+        </EntityType>
+        <EntityType Name="dialogs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="companies" Relationship="Self.FK_Companies_Dialogs_DialogId" FromRole="dialogs" ToRole="companies" />
+          <NavigationProperty Name="messages" Relationship="Self.FK_Messages_Dialogs_Dialog_Id" FromRole="dialogs" ToRole="messages" />
+          <NavigationProperty Name="users" Relationship="Self.userdialogs" FromRole="dialogs" ToRole="users" />
+        </EntityType>
+        <EntityType Name="invites">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="body" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <Property Name="user_id" Type="Int64" Nullable="false" />
+          <Property Name="site_id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="sites" Relationship="Self.FK_invites_Sites_site_id" FromRole="invites" ToRole="sites" />
+          <NavigationProperty Name="users" Relationship="Self.FK_invites_Users_user_id" FromRole="invites" ToRole="users" />
+        </EntityType>
+        <EntityType Name="mails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="From" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Body" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Attachment" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SentDate" Type="DateTime" Nullable="false" />
+          <Property Name="ReadDate" Type="DateTime" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="messages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="SendDate" Type="DateTime" />
+          <Property Name="IsReaded" Type="Boolean" Nullable="false" />
+          <Property Name="Dialog_Id" Type="Int64" />
+          <NavigationProperty Name="dialogs" Relationship="Self.FK_Messages_Dialogs_Dialog_Id" FromRole="messages" ToRole="dialogs" />
+          <NavigationProperty Name="users" Relationship="Self.FK_Messages_Users_UserId" FromRole="messages" ToRole="users" />
+        </EntityType>
+        <EntityType Name="notes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="users" Relationship="Self.FK_Notes_Users_UserId" FromRole="notes" ToRole="users" />
+        </EntityType>
+        <EntityType Name="permissions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsAllowed" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="roles" Relationship="Self.FK_Permissions_Roles_RoleId" FromRole="permissions" ToRole="roles" />
+        </EntityType>
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="permissions" Relationship="Self.FK_Permissions_Roles_RoleId" FromRole="roles" ToRole="permissions" />
+          <NavigationProperty Name="users" Relationship="Self.FK_Users_Roles_RoleId" FromRole="roles" ToRole="users" />
+        </EntityType>
+        <EntityType Name="sent_delivery_mails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int64" Nullable="false" />
+          <Property Name="client_id" Type="Int64" Nullable="false" />
+          <Property Name="delivery_mail_id" Type="Int64" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <Property Name="site_id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="sites" Relationship="Self.FK_sent_delivery_mails_Sites_site_id" FromRole="sent_delivery_mails" ToRole="sites" />
+          <NavigationProperty Name="users" Relationship="Self.FK_sent_delivery_mails_Users_user_id" FromRole="sent_delivery_mails" ToRole="users" />
+        </EntityType>
+        <EntityType Name="sites">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="width" Type="Int32" Nullable="false" />
+          <Property Name="heigth" Type="Int32" Nullable="false" />
+          <Property Name="size" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="clients" Relationship="Self.FK_clients_Sites_site_id" FromRole="sites" ToRole="clients" />
+          <NavigationProperty Name="invites" Relationship="Self.FK_invites_Sites_site_id" FromRole="sites" ToRole="invites" />
+          <NavigationProperty Name="sent_delivery_mails" Relationship="Self.FK_sent_delivery_mails_Sites_site_id" FromRole="sites" ToRole="sent_delivery_mails" />
+          <NavigationProperty Name="user_data" Relationship="Self.FK_User_data_Sites_site_id" FromRole="sites" ToRole="user_data" />
+          <NavigationProperty Name="user_clients" Relationship="Self.user_clients_ibfk_1" FromRole="sites" ToRole="user_clients" />
+        </EntityType>
+        <EntityType Name="sitesfotosetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="width" Type="Int32" Nullable="false" />
+          <Property Name="heigth" Type="Int32" Nullable="false" />
+          <Property Name="size" Type="Int32" Nullable="false" />
+          <Property Name="Profile_img_width" Type="Int32" Nullable="false" />
+          <Property Name="Profile_img_heigth" Type="Int32" Nullable="false" />
+          <Property Name="VideoWidth" Type="Int32" Nullable="false" />
+          <Property Name="VideoHeigth" Type="Int32" Nullable="false" />
+          <Property Name="VideoFormat" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="videoSize" Type="Int32" Nullable="false" />
+          <Property Name="isFixedResolution" Type="Boolean" Nullable="false" />
+          <Property Name="HorizontalWidth" Type="Int32" Nullable="false" />
+          <Property Name="HorizontalHeigth" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="timetables">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="DayOfWeek" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" />
+          <Property Name="Begin" Type="DateTime" />
+          <Property Name="End" Type="DateTime" />
+          <Property Name="Total" Type="Time" Nullable="false" />
+          <NavigationProperty Name="users" Relationship="Self.FK_Timetables_Users_UserId" FromRole="timetables" ToRole="users" />
+        </EntityType>
+        <EntityType Name="user_clients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int64" Nullable="false" />
+          <Property Name="site_id" Type="Int64" Nullable="false" />
+          <Property Name="client_id" Type="Int64" Nullable="false" />
+          <Property Name="Sent_delivery_mail" Type="Int64" />
+          <NavigationProperty Name="sites" Relationship="Self.user_clients_ibfk_1" FromRole="user_clients" ToRole="sites" />
+          <NavigationProperty Name="users" Relationship="Self.user_clients_ibfk_2" FromRole="user_clients" ToRole="users" />
+        </EntityType>
+        <EntityType Name="user_data">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int64" Nullable="false" />
+          <Property Name="site_id" Type="Int64" Nullable="false" />
+          <Property Name="login" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="sites" Relationship="Self.FK_User_data_Sites_site_id" FromRole="user_data" ToRole="sites" />
+          <NavigationProperty Name="users" Relationship="Self.FK_User_data_Users_user_id" FromRole="user_data" ToRole="users" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsOnline" Type="Boolean" Nullable="false" />
+          <Property Name="RoleId" Type="Int64" Nullable="false" />
+          <Property Name="ChiefId" Type="Int64" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CompanyId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="companies" Relationship="Self.FK_Companies_Users_DirectorId" FromRole="users" ToRole="companies" />
+          <NavigationProperty Name="delivery_mails" Relationship="Self.FK_delivery_mails_Users_user_id" FromRole="users" ToRole="delivery_mails" />
+          <NavigationProperty Name="invites" Relationship="Self.FK_invites_Users_user_id" FromRole="users" ToRole="invites" />
+          <NavigationProperty Name="messages" Relationship="Self.FK_Messages_Users_UserId" FromRole="users" ToRole="messages" />
+          <NavigationProperty Name="notes" Relationship="Self.FK_Notes_Users_UserId" FromRole="users" ToRole="notes" />
+          <NavigationProperty Name="roles" Relationship="Self.FK_Users_Roles_RoleId" FromRole="users" ToRole="roles" />
+          <NavigationProperty Name="sent_delivery_mails" Relationship="Self.FK_sent_delivery_mails_Users_user_id" FromRole="users" ToRole="sent_delivery_mails" />
+          <NavigationProperty Name="timetables" Relationship="Self.FK_Timetables_Users_UserId" FromRole="users" ToRole="timetables" />
+          <NavigationProperty Name="user_clients" Relationship="Self.user_clients_ibfk_2" FromRole="users" ToRole="user_clients" />
+          <NavigationProperty Name="user_data" Relationship="Self.FK_User_data_Users_user_id" FromRole="users" ToRole="user_data" />
+          <NavigationProperty Name="users1" Relationship="Self.FK_Users_Users_ChiefId" FromRole="users" ToRole="users1" />
+          <NavigationProperty Name="users2" Relationship="Self.FK_Users_Users_ChiefId" FromRole="users1" ToRole="users" />
+          <NavigationProperty Name="dialogs" Relationship="Self.userdialogs" FromRole="users" ToRole="dialogs" />
+        </EntityType>
+        <Association Name="FK_clients_client_status_StatusId">
+          <End Role="client_status" Type="Self.client_status" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="clients" Type="Self.clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client_status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="clients">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clients_Sites_site_id">
+          <End Role="sites" Type="Self.sites" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="clients" Type="Self.clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="clients">
+              <PropertyRef Name="site_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Companies_Dialogs_DialogId">
+          <End Role="dialogs" Type="Self.dialogs" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="companies" Type="Self.companies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dialogs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="companies">
+              <PropertyRef Name="DialogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Companies_Users_DirectorId">
+          <End Role="users" Type="Self.users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="companies" Type="Self.companies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="companies">
+              <PropertyRef Name="DirectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_delivery_mails_Users_user_id">
+          <End Role="users" Type="Self.users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="delivery_mails" Type="Self.delivery_mails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="delivery_mails">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_Dialogs_Dialog_Id">
+          <End Role="dialogs" Type="Self.dialogs" Multiplicity="0..1" />
+          <End Role="messages" Type="Self.messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dialogs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="Dialog_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_invites_Sites_site_id">
+          <End Role="sites" Type="Self.sites" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="invites" Type="Self.invites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="invites">
+              <PropertyRef Name="site_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_invites_Users_user_id">
+          <End Role="users" Type="Self.users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="invites" Type="Self.invites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="invites">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_Users_UserId">
+          <End Role="users" Type="Self.users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="messages" Type="Self.messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notes_Users_UserId">
+          <End Role="users" Type="Self.users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="notes" Type="Self.notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="notes">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Permissions_Roles_RoleId">
+          <End Role="roles" Type="Self.roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="permissions" Type="Self.permissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="permissions">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Roles_RoleId">
+          <End Role="roles" Type="Self.roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sent_delivery_mails_Sites_site_id">
+          <End Role="sites" Type="Self.sites" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="sent_delivery_mails" Type="Self.sent_delivery_mails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="sent_delivery_mails">
+              <PropertyRef Name="site_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sent_delivery_mails_Users_user_id">
+          <End Role="users" Type="Self.users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="sent_delivery_mails" Type="Self.sent_delivery_mails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="sent_delivery_mails">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_data_Sites_site_id">
+          <End Role="sites" Type="Self.sites" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="user_data" Type="Self.user_data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="user_data">
+              <PropertyRef Name="site_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_clients_ibfk_1">
+          <End Role="sites" Type="Self.sites" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="user_clients" Type="Self.user_clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="user_clients">
+              <PropertyRef Name="site_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Timetables_Users_UserId">
+          <End Role="users" Type="Self.users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="timetables" Type="Self.timetables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="timetables">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_clients_ibfk_2">
+          <End Role="users" Type="Self.users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="user_clients" Type="Self.user_clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="user_clients">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_data_Users_user_id">
+          <End Role="users" Type="Self.users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="user_data" Type="Self.user_data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="user_data">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Users_ChiefId">
+          <End Role="users" Type="Self.users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="users1" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="users1">
+              <PropertyRef Name="ChiefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="userdialogs">
+          <End Role="dialogs" Type="Self.dialogs" Multiplicity="*" />
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="gbua_adminclubEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__migrationhistory" EntityType="Self.C__migrationhistory" />
+          <EntitySet Name="client_status" EntityType="Self.client_status" />
+          <EntitySet Name="clients" EntityType="Self.clients" />
+          <EntitySet Name="companies" EntityType="Self.companies" />
+          <EntitySet Name="delivery_mails" EntityType="Self.delivery_mails" />
+          <EntitySet Name="dialogs" EntityType="Self.dialogs" />
+          <EntitySet Name="invites" EntityType="Self.invites" />
+          <EntitySet Name="mails" EntityType="Self.mails" />
+          <EntitySet Name="messages" EntityType="Self.messages" />
+          <EntitySet Name="notes" EntityType="Self.notes" />
+          <EntitySet Name="permissions" EntityType="Self.permissions" />
+          <EntitySet Name="roles" EntityType="Self.roles" />
+          <EntitySet Name="sent_delivery_mails" EntityType="Self.sent_delivery_mails" />
+          <EntitySet Name="sites" EntityType="Self.sites" />
+          <EntitySet Name="sitesfotosetting" EntityType="Self.sitesfotosetting" />
+          <EntitySet Name="timetables" EntityType="Self.timetables" />
+          <EntitySet Name="user_clients" EntityType="Self.user_clients" />
+          <EntitySet Name="user_data" EntityType="Self.user_data" />
+          <EntitySet Name="users" EntityType="Self.users" />
+          <AssociationSet Name="FK_clients_client_status_StatusId" Association="Self.FK_clients_client_status_StatusId">
+            <End Role="client_status" EntitySet="client_status" />
+            <End Role="clients" EntitySet="clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clients_Sites_site_id" Association="Self.FK_clients_Sites_site_id">
+            <End Role="sites" EntitySet="sites" />
+            <End Role="clients" EntitySet="clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Companies_Dialogs_DialogId" Association="Self.FK_Companies_Dialogs_DialogId">
+            <End Role="dialogs" EntitySet="dialogs" />
+            <End Role="companies" EntitySet="companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Companies_Users_DirectorId" Association="Self.FK_Companies_Users_DirectorId">
+            <End Role="users" EntitySet="users" />
+            <End Role="companies" EntitySet="companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_delivery_mails_Users_user_id" Association="Self.FK_delivery_mails_Users_user_id">
+            <End Role="users" EntitySet="users" />
+            <End Role="delivery_mails" EntitySet="delivery_mails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_Dialogs_Dialog_Id" Association="Self.FK_Messages_Dialogs_Dialog_Id">
+            <End Role="dialogs" EntitySet="dialogs" />
+            <End Role="messages" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_invites_Sites_site_id" Association="Self.FK_invites_Sites_site_id">
+            <End Role="sites" EntitySet="sites" />
+            <End Role="invites" EntitySet="invites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_invites_Users_user_id" Association="Self.FK_invites_Users_user_id">
+            <End Role="users" EntitySet="users" />
+            <End Role="invites" EntitySet="invites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_Users_UserId" Association="Self.FK_Messages_Users_UserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="messages" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notes_Users_UserId" Association="Self.FK_Notes_Users_UserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="notes" EntitySet="notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Permissions_Roles_RoleId" Association="Self.FK_Permissions_Roles_RoleId">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="permissions" EntitySet="permissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Roles_RoleId" Association="Self.FK_Users_Roles_RoleId">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sent_delivery_mails_Sites_site_id" Association="Self.FK_sent_delivery_mails_Sites_site_id">
+            <End Role="sites" EntitySet="sites" />
+            <End Role="sent_delivery_mails" EntitySet="sent_delivery_mails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sent_delivery_mails_Users_user_id" Association="Self.FK_sent_delivery_mails_Users_user_id">
+            <End Role="users" EntitySet="users" />
+            <End Role="sent_delivery_mails" EntitySet="sent_delivery_mails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_data_Sites_site_id" Association="Self.FK_User_data_Sites_site_id">
+            <End Role="sites" EntitySet="sites" />
+            <End Role="user_data" EntitySet="user_data" />
+          </AssociationSet>
+          <AssociationSet Name="user_clients_ibfk_1" Association="Self.user_clients_ibfk_1">
+            <End Role="sites" EntitySet="sites" />
+            <End Role="user_clients" EntitySet="user_clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Timetables_Users_UserId" Association="Self.FK_Timetables_Users_UserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="timetables" EntitySet="timetables" />
+          </AssociationSet>
+          <AssociationSet Name="user_clients_ibfk_2" Association="Self.user_clients_ibfk_2">
+            <End Role="users" EntitySet="users" />
+            <End Role="user_clients" EntitySet="user_clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_data_Users_user_id" Association="Self.FK_User_data_Users_user_id">
+            <End Role="users" EntitySet="users" />
+            <End Role="user_data" EntitySet="user_data" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Users_ChiefId" Association="Self.FK_Users_Users_ChiefId">
+            <End Role="users" EntitySet="users" />
+            <End Role="users1" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="userdialogs" Association="Self.userdialogs">
+            <End Role="dialogs" EntitySet="dialogs" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище gbua_adminclubModelContainer" CdmEntityContainer="gbua_adminclubEntities">
+          <EntitySetMapping Name="C__migrationhistory">
+            <EntityTypeMapping TypeName="gbua_adminclubModel.C__migrationhistory">
+              <MappingFragment StoreEntitySet="__migrationhistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="client_status">
+            <EntityTypeMapping TypeName="gbua_adminclubModel.client_status">
+              <MappingFragment StoreEntitySet="client_status">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clients">
+            <EntityTypeMapping TypeName="gbua_adminclubModel.clients">
+              <MappingFragment StoreEntitySet="clients">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="site_id" ColumnName="site_id" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="companies">
+            <EntityTypeMapping TypeName="gbua_adminclubModel.companies">
+              <MappingFragment StoreEntitySet="companies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DirectorId" ColumnName="DirectorId" />
+                <ScalarProperty Name="DialogId" ColumnName="DialogId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="delivery_mails">
+            <EntityTypeMapping TypeName="gbua_adminclubModel.delivery_mails">
+              <MappingFragment StoreEntitySet="delivery_mails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="body" ColumnName="body" />
+                <ScalarProperty Name="attachment_id" ColumnName="attachment_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="group_id" ColumnName="group_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dialogs">
+            <EntityTypeMapping TypeName="gbua_adminclubModel.dialogs">
+              <MappingFragment StoreEntitySet="dialogs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="invites">
+            <EntityTypeMapping TypeName="gbua_adminclubModel.invites">
+              <MappingFragment StoreEntitySet="invites">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="body" ColumnName="body" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="site_id" ColumnName="site_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mails">
+            <EntityTypeMapping TypeName="gbua_adminclubModel.mails">
+              <MappingFragment StoreEntitySet="mails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Attachment" ColumnName="Attachment" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="ReadDate" ColumnName="ReadDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="messages">
+            <EntityTypeMapping TypeName="gbua_adminclubModel.messages">
+              <MappingFragment StoreEntitySet="messages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SendDate" ColumnName="SendDate" />
+                <ScalarProperty Name="IsReaded" ColumnName="IsReaded" />
+                <ScalarProperty Name="Dialog_Id" ColumnName="Dialog_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="notes">
+            <EntityTypeMapping TypeName="gbua_adminclubModel.notes">
+              <MappingFragment StoreEntitySet="notes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="permissions">
+            <EntityTypeMapping TypeName="gbua_adminclubModel.permissions">
+              <MappingFragment StoreEntitySet="permissions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsAllowed" ColumnName="IsAllowed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roles">
+            <EntityTypeMapping TypeName="gbua_adminclubModel.roles">
+              <MappingFragment StoreEntitySet="roles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sent_delivery_mails">
+            <EntityTypeMapping TypeName="gbua_adminclubModel.sent_delivery_mails">
+              <MappingFragment StoreEntitySet="sent_delivery_mails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="delivery_mail_id" ColumnName="delivery_mail_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="site_id" ColumnName="site_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sites">
+            <EntityTypeMapping TypeName="gbua_adminclubModel.sites">
+              <MappingFragment StoreEntitySet="sites">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="heigth" ColumnName="heigth" />
+                <ScalarProperty Name="size" ColumnName="size" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sitesfotosetting">
+            <EntityTypeMapping TypeName="gbua_adminclubModel.sitesfotosetting">
+              <MappingFragment StoreEntitySet="sitesfotosetting">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="heigth" ColumnName="heigth" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="Profile_img_width" ColumnName="Profile_img_width" />
+                <ScalarProperty Name="Profile_img_heigth" ColumnName="Profile_img_heigth" />
+                <ScalarProperty Name="VideoWidth" ColumnName="VideoWidth" />
+                <ScalarProperty Name="VideoHeigth" ColumnName="VideoHeigth" />
+                <ScalarProperty Name="VideoFormat" ColumnName="VideoFormat" />
+                <ScalarProperty Name="videoSize" ColumnName="videoSize" />
+                <ScalarProperty Name="isFixedResolution" ColumnName="isFixedResolution" />
+                <ScalarProperty Name="HorizontalWidth" ColumnName="HorizontalWidth" />
+                <ScalarProperty Name="HorizontalHeigth" ColumnName="HorizontalHeigth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="timetables">
+            <EntityTypeMapping TypeName="gbua_adminclubModel.timetables">
+              <MappingFragment StoreEntitySet="timetables">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="DayOfWeek" ColumnName="DayOfWeek" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Begin" ColumnName="Begin" />
+                <ScalarProperty Name="End" ColumnName="End" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_clients">
+            <EntityTypeMapping TypeName="gbua_adminclubModel.user_clients">
+              <MappingFragment StoreEntitySet="user_clients">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="site_id" ColumnName="site_id" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="Sent_delivery_mail" ColumnName="Sent_delivery_mail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_data">
+            <EntityTypeMapping TypeName="gbua_adminclubModel.user_data">
+              <MappingFragment StoreEntitySet="user_data">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="site_id" ColumnName="site_id" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="gbua_adminclubModel.users">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="ChiefId" ColumnName="ChiefId" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="userdialogs" TypeName="gbua_adminclubModel.userdialogs" StoreEntitySet="userdialogs">
+            <EndProperty Name="dialogs">
+              <ScalarProperty Name="Id" ColumnName="Dialog_Id" />
+            </EndProperty>
+            <EndProperty Name="users">
+              <ScalarProperty Name="Id" ColumnName="User_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
